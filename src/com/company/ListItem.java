@@ -15,4 +15,10 @@ public class ListItem {
     public Item firstInItemList() {
         return itemList.get(0);
     }
+    public Item itemByIndex(int index) {
+        return itemList.get(index);
+    }
+    public int getSize() {
+        return itemList.size();
+    }
 }

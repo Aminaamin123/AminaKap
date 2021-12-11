@@ -16,10 +16,14 @@ public class GreedyHierarchy {
         System.out.println("Depth: " + depth);
         System.out.println("Tree:");
         setItems(); // setting some test items to tree and prints the tree
-        System.out.println("----------------------------------------");
+        System.out.println("-----------------------------------------------------------");
         System.out.print("Value of path: ");
-        System.out.println(findMostFollowersPath(listItem.firstInItemList(), 0));
+        System.out.println(findPath(listItem.firstInItemList(), 0));
         System.out.println("Path: ");
+        System.out.print("Value: ");
+        System.out.print(listItem.firstInItemList().getValue());
+        System.out.print(" Weight: ");
+        System.out.println(listItem.firstInItemList().getWeight());
         for (Item item: itemPath){
             System.out.print("Value: ");
             System.out.print(item.getValue());
@@ -27,30 +31,29 @@ public class GreedyHierarchy {
             System.out.print(item.getWeight());
             System.out.println("");
         }
+        System.out.println("--------------------------------------------------------");
     }
 
-    public float findMostFollowersPath(Item item, int currentDepth) {
+    public float findPath(Item item, int currentDepth) {
         float max = 0;
-        Item toFollow = null;
+        Item check = null;
 
             if (depth == currentDepth){
                 return item.getValue();
             }else{
                 List<Item> children = item.getChildren();
                 for (Item child : children) {
-                    float followersCount = child.getValueWeight();
-                    if (followersCount > max) {
-                        toFollow = child;
-                        max = followersCount;
+                    float count = child.getValueWeight();
+                    if (count > max) {
+                        check = child;
+                        max = count;
                     }
                 }
             }
-
-
-        if (currentWeight < maxLevel) {
-            itemPath.add(toFollow);
-            currentWeight += toFollow.getWeight();
-            max += findMostFollowersPath(toFollow, currentDepth+1);
+        if (currentWeight < maxLevel || check != null) {
+            itemPath.add(check);
+            currentWeight += check.getWeight();
+            max += findPath(check, currentDepth+1);
         }
         return max;
     }
@@ -70,13 +73,13 @@ public class GreedyHierarchy {
             rowOne.add(secondItem);
             startItem.addChild(secondItem);
             idnr++;
-            for (int j = 0; j < 2; j++) {
+            for (int j = 0; j < 3; j++) {
                 Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(20), idnr);
                 listItem.addItemList(item);
                 rowTwo.add(item);
                 secondItem.addChild(item);
                 idnr++;
-                for (int k = 0; k < 2; k++) {
+                for (int k = 0; k < 3; k++) {
                     Item lastItem = new Item(1+rn.nextInt(10), 1+rn.nextInt(20), idnr);
                     listItem.addItemList(lastItem);
                     rowThree.add(lastItem);
