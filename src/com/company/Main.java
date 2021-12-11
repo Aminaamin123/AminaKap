@@ -9,15 +9,12 @@ public class Main {
         * 2 Improve Search with Neighborhood Search
         */
 
-        //Greedy algorithm going down tree search - basic only looking at value
+        //Greedy algorithm going down tree search
         GreedyHierarchy greedy = new GreedyHierarchy();
 
-        // Adding the greedy algorithm to non hierarchy set
-        // call func
-
-
-
+        // Adding Neighborhood Search to the greedy
         System.out.println("Neighborhood Search");
+        // add func
 
     }
 }
