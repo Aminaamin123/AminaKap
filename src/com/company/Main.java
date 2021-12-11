@@ -10,11 +10,15 @@ public class Main {
         */
 
         //Greedy algorithm going down tree search
-        GreedyHierarchy greedy = new GreedyHierarchy();
+        GreedyHierarchy greedyHierarchy = new GreedyHierarchy();
+
+        //Greedy no tree search
+        Greedy greedy = new Greedy();
 
         // Adding Neighborhood Search to the greedy
         System.out.println("Neighborhood Search");
         // add func
+        Neighborhood neighborhood = new Neighborhood();
 
     }
 }

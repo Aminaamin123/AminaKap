@@ -29,8 +29,8 @@ public class GreedyHierarchy {
         }
     }
 
-    public long findMostFollowersPath(Item item, int currentDepth) {
-        long max = 0;
+    public float findMostFollowersPath(Item item, int currentDepth) {
+        float max = 0;
         Item toFollow = null;
 
             if (depth == currentDepth){
@@ -38,7 +38,7 @@ public class GreedyHierarchy {
             }else{
                 List<Item> children = item.getChildren();
                 for (Item child : children) {
-                    long followersCount = child.getValue();
+                    float followersCount = child.getValueWeight();
                     if (followersCount > max) {
                         toFollow = child;
                         max = followersCount;
