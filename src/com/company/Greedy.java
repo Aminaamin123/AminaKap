@@ -10,8 +10,11 @@ public class Greedy {
     * Compare to choose items
     * Check weight capacity if full ? are there smaller weights that do fit?
     * */
-    final double[] knapsacks = {100, 100, 100, 100, 100};
 
+
+
+    /*
+    final double[] knapsacks = {100, 100, 100, 100, 100};
     int currentWeight = 0;
     final int maxLevel = 20;
     int depth = 3;
@@ -65,7 +68,7 @@ public class Greedy {
         }
     }
 
-
+*/
 
 
 

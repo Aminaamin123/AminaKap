@@ -15,10 +15,15 @@ public class Main {
         //Greedy no tree search
         Greedy greedy = new Greedy();
 
+
         // Adding Neighborhood Search to the greedy
         System.out.println("Neighborhood Search");
         // add func
         Neighborhood neighborhood = new Neighborhood();
 
+
+
     }
+
+
 }
