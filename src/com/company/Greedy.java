@@ -8,7 +8,6 @@ public class Greedy {
     /*
     * check value / weight
     * Compare to choose items
-    * Check weight capacity if full ? are there smaller weights that do fit?
     * */
     private List<Item> itemPath = new ArrayList<Item>();
     ListItem listItem = new ListItem();
@@ -42,21 +41,19 @@ public class Greedy {
             if (getMaxFraction() != null) {
                 done = true;
                 int temp = sumWeight + item.getWeight();
-                System.out.print(max);
-                System.out.print(" - ");
-                System.out.print(sumWeight);
-                System.out.print(" - ");
-                System.out.print(temp);
-                System.out.print(" - ");
-                System.out.println(item.getWeight());
                 if (temp <= max) {
                     done = false;
                     sumWeight = temp;
                     itemPath.add(item);
                     sumProfit = sumProfit + item.getValue();
-                }}else{done = true;}
-                listItem.removeItem(item);
-            //}
+                }else{
+                    for (Item loop : listItem.getItemList())
+                    if (item.getWeight() > loop.getWeight()){
+                        done = false;
+                    }
+                }
+            }else{done = true;}
+            listItem.removeItem(item);
         }
         String output ="Sum value:" + sumProfit + " - Sum weight:" + sumWeight;
         System.out.println(output);
