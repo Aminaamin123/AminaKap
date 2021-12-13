@@ -39,25 +39,31 @@ public class Greedy {
         boolean done = false;
         while (!done){
             Item item = getMaxFraction();
-            done = true;
-            int temp = sumWeight + item.getWeight();
-            if(temp <= max){
-               done = false;
-               sumWeight = temp;
-               itemPath.add(item);
-               sumProfit = sumProfit + item.getValue();
-               //listItem.removeItem(item); ??
-            }
+            if (getMaxFraction() != null) {
+                done = true;
+                int temp = sumWeight + item.getWeight();
+                if (temp <= max) {
+                    done = false;
+                    sumWeight = temp;
+                    itemPath.add(item);
+                    sumProfit = sumProfit + item.getValue();
+                }}else{done = true;}
+                listItem.removeItem(item);
+            //}
         }
         String output ="Sum value:" + sumProfit + " - Sum weight:" + sumWeight;
         System.out.println(output);
+        System.out.println("The knapsack contains:");
+        for (Item print : itemPath)    {
+              String out ="Value:" + print.getValue() + " - Weight:" + print.getWeight();
+              System.out.println(out);
+        }
     }
 
     public Item getMaxFraction(){
         float maxFraction = 0;
         Item bestFraction = null;
-        for (int i = 0; i < listItem.getSize(); i++){
-            Item temp = listItem.itemByIndex(i);
+        for (Item temp : listItem.getItemList()){
             if (temp.getFraction() > maxFraction){
                 maxFraction = temp.getFraction();
                 bestFraction = temp;
