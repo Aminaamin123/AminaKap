@@ -43,7 +43,7 @@ public class GreedyHierarchy {
             }else{
                 List<Item> children = item.getChildren();
                 for (Item child : children) {
-                    float count = child.getValueWeight();
+                    float count = child.getFraction();
                     if (count > max) {
                         check = child;
                         max = count;
