@@ -24,10 +24,11 @@ public class Greedy {
             Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
             listItem.addItemList(item);
         }
+        System.out.println("");
         for (Item item : listItem.getItemList()) {
-            System.out.print("V");
+            System.out.print("Value ");
             System.out.print(item.getValue());
-            System.out.print(" W");
+            System.out.print(" - Weight ");
             System.out.println(item.getWeight());
         }
     }
@@ -55,12 +56,16 @@ public class Greedy {
             }else{done = true;}
             listItem.removeItem(item);
         }
-        String output ="Sum value:" + sumProfit + " - Sum weight:" + sumWeight;
+        print(sumProfit, sumWeight);
+    }
+
+    public void print(int profit, int weight){
+        String output ="Sum value: " + profit + " - Sum weight: " + weight;
         System.out.println(output);
         System.out.println("The knapsack contains:");
         for (Item print : itemPath)    {
-              String out ="Value:" + print.getValue() + " - Weight:" + print.getWeight();
-              System.out.println(out);
+            String out ="Value: " + print.getValue() + " - Weight: " + print.getWeight();
+            System.out.println(out);
         }
     }
 
