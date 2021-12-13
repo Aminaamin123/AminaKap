@@ -8,7 +8,7 @@ public class Knapsack {
         int[] wt = {5, 4, 6, 3};
         int n = wt.length;
 
-        int[][] table = new int[n + 1][w + 1];
+        int[][] table = new int[n + 1][w + 1]; // create table
         for (int r = 0; r < w + 1; r++) {
             table[0][r] = 0;
         }

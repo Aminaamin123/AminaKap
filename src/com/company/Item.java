@@ -7,14 +7,14 @@ public class Item {
     private long itemId;
     private int weight;
     private int value;
-    private float valueWeight;
+    private float fraction;
     private List<Item> children = new ArrayList<Item>();
 
     public Item(int weight, int value, long itemId) {
         this.weight = weight;
         this.value = value;
         this.itemId = itemId;
-        valueWeight = value/weight;
+        fraction = value/weight;
     }
     public List<Item> getChildren(){
         if(children.isEmpty()) {
@@ -26,8 +26,9 @@ public class Item {
     public int getWeight(){
         return weight;
     }
-    public float getValueWeight(){
-        return valueWeight;
+
+    public float getFraction(){
+        return fraction;
     }
 
     public int getValue(){

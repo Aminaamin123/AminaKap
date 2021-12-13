@@ -10,66 +10,61 @@ public class Greedy {
     * Compare to choose items
     * Check weight capacity if full ? are there smaller weights that do fit?
     * */
-
-
-
-    /*
-    final double[] knapsacks = {100, 100, 100, 100, 100};
-    int currentWeight = 0;
-    final int maxLevel = 20;
-    int depth = 3;
-    private List<Item> knapsackItems = new ArrayList<Item>();
+    private List<Item> itemPath = new ArrayList<Item>();
     ListItem listItem = new ListItem();
-
+    private int max = 10;
 
     public Greedy() {
-        System.out.println("Greedy algorithm tree search - find optimal path, locally");
-        setItems(); // setting some test items to tree and prints the tree
-        System.out.println("       ----------------------------------------");
-        knapsack();
-        System.out.println("The items in the knapsack");
-        for (Item item : knapsackItems){
-            System.out.print("Value: ");
-            System.out.print(item.getValue());
-            System.out.print(" Weight: ");
-            System.out.print(item.getWeight());
-            System.out.println("");
-        }System.out.println("");
-    }
-
-    public void knapsack(){
-        while (currentWeight < maxLevel) {
-            knapsackItems.add(findBestItem());
-            currentWeight += findBestItem().getWeight();
-        }
-
-    }
-
-    public Item findBestItem() {
-        float max = 0;
-        int nr = 0;
-        Item highest = null;
-
-        for (Item item : listItem.getItemList()){
-            float count = item.getValueWeight();
-            if (count > max) {
-                max = count;
-                highest = item;
-            }
-        }
-        return highest;
+        setItems();
+        algorithm();
     }
 
     public void setItems(){
-        for (int i = 0; i < 14; i++) {
+        for (int i = 0; i < 4; i++) {
             Random rn = new Random();
-            Item secondItem = new Item(1 + rn.nextInt(20), 1 + rn.nextInt(20), i);
-            listItem.addItemList(secondItem);
+            Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
+            listItem.addItemList(item);
+        }
+        for (Item item : listItem.getItemList()) {
+            System.out.print("V");
+            System.out.print(item.getValue());
+            System.out.print("W");
+            System.out.print(item.getWeight());
+            System.out.print("---");
         }
     }
 
-*/
+    public void algorithm(){
+        int sumWeight = 0;
+        int sumProfit = 0;
+        boolean done = false;
+        while (!done){
+            Item item = getMaxFraction();
+            done = true;
+            int temp = sumWeight + item.getWeight();
+            if(temp <= max){
+               done = false;
+               sumWeight = temp;
+               itemPath.add(item);
+               sumProfit = sumProfit + item.getValue();
+            }
+        }
+        String output ="Sum value:" + sumWeight + "Sum weight:" + sumWeight;
+        System.out.println(output);
+    }
 
+    public Item getMaxFraction(){
+        float maxFraction = 0;
+        Item bestFraction = null;
+        for (int i = 0; i < listItem.getSize(); i++){
+            Item temp = listItem.itemByIndex(i);
+            if (temp.getFraction() > maxFraction){
+                maxFraction = temp.getFraction();
+                bestFraction = temp;
+            }
+        }
+        return bestFraction;
+    }
 
 
 }
