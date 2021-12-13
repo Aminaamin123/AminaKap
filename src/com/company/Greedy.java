@@ -42,6 +42,13 @@ public class Greedy {
             if (getMaxFraction() != null) {
                 done = true;
                 int temp = sumWeight + item.getWeight();
+                System.out.print(max);
+                System.out.print(" - ");
+                System.out.print(sumWeight);
+                System.out.print(" - ");
+                System.out.print(temp);
+                System.out.print(" - ");
+                System.out.println(item.getWeight());
                 if (temp <= max) {
                     done = false;
                     sumWeight = temp;
@@ -64,7 +71,7 @@ public class Greedy {
         float maxFraction = 0;
         Item bestFraction = null;
         for (Item temp : listItem.getItemList()){
-            if (temp.getFraction() > maxFraction){
+            if (temp.getFraction() >= maxFraction){
                 maxFraction = temp.getFraction();
                 bestFraction = temp;
             }
