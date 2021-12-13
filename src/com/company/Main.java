@@ -6,7 +6,7 @@ public class Main {
         /*
         * 1 Greedy Algorithm
         * In each state of process choose locally optimal/greedy choice
-        * 2 Improve Search with Neighborhood Search
+        * 2 Improve Search with Neighborhood Search - local optimal
         */
 
         //Greedy algorithm going down tree search
@@ -21,9 +21,6 @@ public class Main {
         // add func
         //Neighborhood neighborhood = new Neighborhood();
 
-
-
     }
-
 
 }

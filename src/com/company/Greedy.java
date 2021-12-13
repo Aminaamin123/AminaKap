@@ -28,9 +28,8 @@ public class Greedy {
         for (Item item : listItem.getItemList()) {
             System.out.print("V");
             System.out.print(item.getValue());
-            System.out.print("W");
-            System.out.print(item.getWeight());
-            System.out.print("---");
+            System.out.print(" W");
+            System.out.println(item.getWeight());
         }
     }
 
@@ -47,9 +46,10 @@ public class Greedy {
                sumWeight = temp;
                itemPath.add(item);
                sumProfit = sumProfit + item.getValue();
+               //listItem.removeItem(item); ??
             }
         }
-        String output ="Sum value:" + sumWeight + "Sum weight:" + sumWeight;
+        String output ="Sum value:" + sumProfit + " - Sum weight:" + sumWeight;
         System.out.println(output);
     }
 

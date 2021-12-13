@@ -12,6 +12,9 @@ public class ListItem {
     public void addItemList(Item item) {
         itemList.add(item);
     }
+    public void removeItem(Item item) {
+        itemList.remove(item);
+    }
     public Item firstInItemList() {
         return itemList.get(0);
     }
