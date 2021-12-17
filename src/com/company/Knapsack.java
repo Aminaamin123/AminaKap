@@ -14,21 +14,6 @@ public class Knapsack {
         this.avalibleItem = avalibleItem;
     }
 
-    public void setAvalibleItem(List<Item> list) {
-        avalibleItem = list;
-    }
-
-
-    public void addItem(Item item) {
-        itemList.add(item);
-    }
-    public void reomveItem(Item item) {
-        itemList.remove(item);
-    }
-    public List<Item> getItemList() {
-            return itemList;
-    }
-
     public int getWeight(){
         int weight = 0;
         for (Item item : itemList){
@@ -36,18 +21,21 @@ public class Knapsack {
         }
         return weight;
     }
+
+    public void setAvalibleItem(List<Item> list) {avalibleItem = list;}
+    public List<Item> getAvalibleItem() {
+        return avalibleItem;
+    }
+    public void addItem(Item item) {itemList.add(item);}
+    public void reomveItem(Item item) {itemList.remove(item);}
+    public List<Item> getItemList() {
+        return itemList;
+    }
     public int getCapacity(){
         return capacity;
     }
-
-    public Item firstInItemList() {
-        return itemList.get(0);
-    }
-    public Item itemByIndex(int index) {
-        return itemList.get(index);
-    }
-    public int getSize() {
-        return itemList.size();
-    }
+    public Item firstInItemList() {return itemList.get(0);}
+    public Item itemByIndex(int index) {return itemList.get(index);}
+    public int getSize() {return itemList.size();}
 
 }

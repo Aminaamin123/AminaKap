@@ -5,11 +5,9 @@ import java.util.List;
 import java.util.Random;
 
 public class Greedy {
-    /*
-    * check value / weight
-    * Compare to choose items
-    * MULTIPLE!!
-    * */
+    /* check value / weight
+    *  Compare to choose items on each step - local
+    */
     private List<Item> itemPath = new ArrayList<Item>();
     ListItem listItem = new ListItem();
     private List<Item> avalibleItem = new ArrayList<Item>();
@@ -25,13 +23,13 @@ public class Greedy {
     }
 
     public Knapsack start() {
-        setItems(); //TODO: make a user interface to set items
+        setItems(); //TODO: make a user interface to set items - RegisterItems();
         algorithm();
         return knapsack;
     }
 
     public void setItems(){
-        for (int i = 0; i < 4; i++) {
+        for (int i = 0; i < 7; i++) {
             Random rn = new Random();
             Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
             listItem.addItem(item);

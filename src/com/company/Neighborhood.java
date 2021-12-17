@@ -11,7 +11,7 @@ public class Neighborhood {
     public Neighborhood(ListKnapsack listKnapsack) {
         this.listKnapsack = listKnapsack;
         for (Knapsack knapsack : listKnapsack.getItemList()){
-            System.out.println(knapsack.getItemList());
+            System.out.println(knapsack.getAvalibleItem());
             System.out.println("---------------------");
         }
     }

@@ -10,7 +10,7 @@ public class Main {
         */
 
         ListKnapsack listKnapsack = new ListKnapsack();
-        int amountOfKnapsacks = 5;
+        int amountOfKnapsacks = 5; //TODO: Userinterface to pick amout of knapsacks
         for (int i = 1; i <= amountOfKnapsacks; i++) {
             Greedy greedy = new Greedy();
             Knapsack knapsack = greedy.start();
