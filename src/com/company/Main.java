@@ -1,25 +1,25 @@
 package com.company;
 
-public class Main {
+import java.util.List;
 
+public class Main {
     public static void main(String[] args) {
         /*
-        * 1 Greedy Algorithm
-        * In each state of process choose locally optimal/greedy choice
-        * 2 Improve Search with Neighborhood Search - local optimal
+        * 1 Greedy Algorithm to create Multiple Knapsacks
+        * 2 Improve Search with Neighborhood Search
         */
 
-        //Greedy algorithm going down tree search
-        //GreedyHierarchy greedyHierarchy = new GreedyHierarchy();
+        ListKnapsack listKnapsack = new ListKnapsack();
+        int amountOfKnapsacks = 5;
+        for (int i = 1; i <= amountOfKnapsacks; i++) {
+            Greedy greedy = new Greedy();
+            Knapsack knapsack = greedy.start();
+            listKnapsack.addItemList(knapsack);
+        }
 
-        //Greedy no tree search
-        Greedy greedy = new Greedy();
-
-
-        // Adding Neighborhood Search to the greedy
-       // System.out.println("Neighborhood Search");
-        // add func
-        //Neighborhood neighborhood = new Neighborhood();
+        // Adding Neighborhood Search to improve
+        //TODO: send list of knapsacks into Neighborhood to improve search
+        Neighborhood neighborhood = new Neighborhood(listKnapsack);
 
     }
 

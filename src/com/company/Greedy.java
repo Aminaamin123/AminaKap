@@ -8,29 +8,43 @@ public class Greedy {
     /*
     * check value / weight
     * Compare to choose items
+    * MULTIPLE!!
     * */
     private List<Item> itemPath = new ArrayList<Item>();
     ListItem listItem = new ListItem();
+    private List<Item> avalibleItem = new ArrayList<Item>();
     private int max = 10;
+    Knapsack knapsack;
 
     public Greedy() {
+        /*
         setItems();
         algorithm();
+        return knapsack;
+        */
+    }
+
+    public Knapsack start() {
+        setItems(); //TODO: make a user interface to set items
+        algorithm();
+        return knapsack;
     }
 
     public void setItems(){
         for (int i = 0; i < 4; i++) {
             Random rn = new Random();
             Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
-            listItem.addItemList(item);
+            listItem.addItem(item);
+            avalibleItem.add(item);
         }
+        /*
         System.out.println("");
         for (Item item : listItem.getItemList()) {
             System.out.print("Value ");
             System.out.print(item.getValue());
             System.out.print(" - Weight ");
             System.out.println(item.getWeight());
-        }
+        }*/
     }
 
     public void algorithm(){
@@ -56,7 +70,8 @@ public class Greedy {
             }else{done = true;}
             listItem.removeItem(item);
         }
-        print(sumProfit, sumWeight);
+        knapsack = new Knapsack(max, itemPath, avalibleItem);
+        // print(sumProfit, sumWeight);
     }
 
     public void print(int profit, int weight){

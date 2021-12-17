@@ -9,7 +9,7 @@ public class ListItem {
     public List<Item> getItemList() {
         return itemList;
     }
-    public void addItemList(Item item) {
+    public void addItem(Item item) {
         itemList.add(item);
     }
     public void removeItem(Item item) {

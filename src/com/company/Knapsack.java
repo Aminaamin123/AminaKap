@@ -1,39 +1,53 @@
 package com.company;
-import java.util.Arrays;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class Knapsack {
-    public static void main(String args[]) {
-        int w = 10;
-        int[] val = {10, 40, 30, 50};
-        int[] wt = {5, 4, 6, 3};
-        int n = wt.length;
+    private List<Item> itemList = new ArrayList<Item>();
+    private List<Item> avalibleItem = new ArrayList<Item>();
+    private int capacity;
 
-        int[][] table = new int[n + 1][w + 1]; // create table
-        for (int r = 0; r < w + 1; r++) {
-            table[0][r] = 0;
-        }
-        for (int c = 0; c < n + 1; c++) {
-            table[c][0] = 0;
-        }
-
-        for (int item = 1; item <= n; item++) {
-            for (int capacity = 1; capacity <= w; capacity++) {
-                int maxValWithoutCurr = table[item - 1][capacity];
-                int maxValWithCurr = 0;
-
-                int weightOfCurr = wt[item - 1];
-                if (capacity >= weightOfCurr) { // check if item fit
-                    maxValWithCurr = val[item - 1];
-
-                    int remainingCapacity = capacity - weightOfCurr; // remainingCapacity must be at least 0
-                    maxValWithCurr += table[item - 1][remainingCapacity]; // Add  maximum value  remaining capacity
-                }
-
-                table[item][capacity] = Math.max(maxValWithoutCurr, maxValWithCurr);
-            }
-        }
-
-        System.out.println(table[n][w]);
-        System.out.println(Arrays.deepToString(table));
+    public Knapsack(int capacity, List<Item> itemList, List<Item> avalibleItem){
+        this.capacity = capacity;
+        this.itemList = itemList;
+        this.avalibleItem = avalibleItem;
     }
+
+    public void setAvalibleItem(List<Item> list) {
+        avalibleItem = list;
+    }
+
+
+    public void addItem(Item item) {
+        itemList.add(item);
+    }
+    public void reomveItem(Item item) {
+        itemList.remove(item);
+    }
+    public List<Item> getItemList() {
+            return itemList;
+    }
+
+    public int getWeight(){
+        int weight = 0;
+        for (Item item : itemList){
+            weight += item.getWeight();
+        }
+        return weight;
+    }
+    public int getCapacity(){
+        return capacity;
+    }
+
+    public Item firstInItemList() {
+        return itemList.get(0);
+    }
+    public Item itemByIndex(int index) {
+        return itemList.get(index);
+    }
+    public int getSize() {
+        return itemList.size();
+    }
+
 }
