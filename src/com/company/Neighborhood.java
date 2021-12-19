@@ -14,15 +14,14 @@ public class Neighborhood {
         boolean change = false;
         //ListKnapsack copy = listKnapsack;
 
-        for (int i = 0; i < listKnapsack.getSize(); i++){
-            Knapsack knapsack = listKnapsack.itemByIndex(i);
+        for (Knapsack knapsack : listKnapsack.getItemList()){
             List<Item> itemList = new ArrayList<Item>();
             itemList = knapsack.getItemList();
             for (int j = 0; j < itemList.size(); j++ ){
                 Item item = itemList.get(j);
                 // add items to other knapsack ???
                 for (int nextKnapsack = 0; nextKnapsack < listKnapsack.getSize(); nextKnapsack++) {
-                    if (nextKnapsack == i) {
+                    if (listKnapsack.itemByIndex(nextKnapsack) == knapsack) {
                         continue;
                     }
                     else{
