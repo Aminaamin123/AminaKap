@@ -10,9 +10,8 @@ public class Neighborhood {
 
     public Neighborhood(ListKnapsack listKnapsack, ListItem listItem) {
         this.listKnapsack = listKnapsack;
-        int total = totalValue(listKnapsack); // get total value of knapsack
         boolean change = false;
-        //ListKnapsack copy = listKnapsack;
+        int total = totalValue(listKnapsack); // get total value of knapsack
 
         for (Item available : listItem.getItemList()){
             for (Knapsack knapsack : listKnapsack.getItemList()){
@@ -52,27 +51,47 @@ public class Neighborhood {
                     }
                 }
             }
-        } // adding to other sack & and trying to fill with available
-
+        } // adding to other knapsack & and trying to fill with available
+        int newTotal = totalValue(listKnapsack);
         if (change){
-            int newTotal = totalValue(listKnapsack);
             System.out.println("Change has been made between knapsacks");
-            System.out.println("Old Total = "+total +" - New total = "+newTotal);
             change = false;
         }
+        System.out.println("Old Total = "+total +" - New total = "+newTotal);
 
         for (Knapsack knapsack : listKnapsack.getItemList()){
-            //System.out.println(knapsack.getItemList());
+            //TODO: change item in knapsack
+            // remove lowest fraction
+            // replace with available highest fraction if higher fraction than current
             List<Item> itemList = new ArrayList<Item>();
             itemList = knapsack.getItemList();
-
-            if (knapsack.getSpaceInKnapsack() > 0){
-
+            float lowest = 100000;
+            Item lowestItem = null;
+            for (Item item : itemList){
+                if(item.getFraction() < lowest){
+                    lowest = item.getFraction();
+                    lowestItem = item;
+                }
+            }
+            float highest = 0;
+            Item highestItem = null;
+            for (Item available : listItem.getItemList()){
+                if(available.getFraction() > highest){
+                    highest = available.getFraction();
+                    highestItem = available;
+                }
+            }
+            if (highest > lowest){
+                knapsack.removeItem(lowestItem);
+                if(listItem.getSize() != 0){
+                    if (knapsack.addItem(highestItem)){
+                        listItem.removeItem(highestItem);
+                    }else {knapsack.addItem(lowestItem);}
+                }
             }
 
-            //System.out.println(children.get(0).getWeight());
-            //System.out.println(children.size());
-        }
+        }//Changing items to get better result
+
     }
 
     public static int totalValue(ListKnapsack listKnapsack){

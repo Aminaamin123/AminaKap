@@ -27,7 +27,6 @@ public class Greedy {
     }
 
     public Knapsack start() {
-        //setItems(); //TODO: make a user interface to set items - RegisterItems();
         algorithm();
         return knapsack;
     }

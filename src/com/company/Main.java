@@ -18,7 +18,7 @@ public class Main {
         System.out.println("Enter amount of knapsacks");
         int amountOfKnapsacks = myObj.nextInt();
 
-        for (int i = 0; i < 30*amountOfKnapsacks; i++) { // set all items
+        for (int i = 0; i < 50*amountOfKnapsacks; i++) { // set all items
             Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
             listItem.addItem(item);
         }
@@ -31,7 +31,6 @@ public class Main {
         }
 
         // Adding Neighborhood Search to improve
-        //TODO: send list of knapsacks into Neighborhood to improve search
         Neighborhood neighborhood = new Neighborhood(listKnapsack, listItem);
     }
 
