@@ -31,6 +31,11 @@ public class Neighborhood {
                             if (knapsack.removeItem(item)) {
                                 change = true;
                                 System.out.println("CHANGE HAPPENING");
+                                for (Item avalible : listItem.getItemList()){
+                                    if(knapsack.addItem(avalible)){
+                                        System.out.println("new item in list");
+                                    }
+                                }
                                 break;
                             }
                         }
