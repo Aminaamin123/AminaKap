@@ -10,11 +10,15 @@ public class Greedy {
     */
     private List<Item> itemPath = new ArrayList<Item>();
     ListItem listItem = new ListItem();
-    private List<Item> avalibleItem = new ArrayList<Item>();
-    private int max = 10;
+    //private List<Item> avalibleItem = new ArrayList<Item>();
+    ListItem avalibleItem = new ListItem();
+    private int max;
     Knapsack knapsack;
 
-    public Greedy() {
+    public Greedy(int max, ListItem avalible) {
+        this.max = max;
+        this.avalibleItem = avalible;
+        this.listItem = avalible;
         /*
         setItems();
         algorithm();
@@ -23,26 +27,15 @@ public class Greedy {
     }
 
     public Knapsack start() {
-        setItems(); //TODO: make a user interface to set items - RegisterItems();
+        //setItems(); //TODO: make a user interface to set items - RegisterItems();
         algorithm();
         return knapsack;
     }
-
-    public void setItems(){
-        for (int i = 0; i < 7; i++) {
-            Random rn = new Random();
-            Item item = new Item(1+rn.nextInt(10), 1+rn.nextInt(10), i);
-            listItem.addItem(item);
-            avalibleItem.add(item);
+    public ListItem getUnusedItem() {
+        for (Item used: itemPath){
+            avalibleItem.removeItem(used);
         }
-        /*
-        System.out.println("");
-        for (Item item : listItem.getItemList()) {
-            System.out.print("Value ");
-            System.out.print(item.getValue());
-            System.out.print(" - Weight ");
-            System.out.println(item.getWeight());
-        }*/
+        return avalibleItem;
     }
 
     public void algorithm(){

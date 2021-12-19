@@ -5,10 +5,11 @@ import java.util.List;
 
 public class Knapsack {
     private List<Item> itemList = new ArrayList<Item>();
-    private List<Item> avalibleItem = new ArrayList<Item>();
+    //private List<Item> avalibleItem = new ArrayList<Item>();
+    ListItem avalibleItem = new ListItem();
     private int capacity;
 
-    public Knapsack(int capacity, List<Item> itemList, List<Item> avalibleItem){
+    public Knapsack(int capacity, List<Item> itemList, ListItem avalibleItem){
         this.capacity = capacity;
         this.itemList = itemList;
         this.avalibleItem = avalibleItem;
@@ -22,8 +23,8 @@ public class Knapsack {
         return weight;
     }
 
-    public void setAvalibleItem(List<Item> list) {avalibleItem = list;}
-    public List<Item> getAvalibleItem() {
+    public void setAvalibleItem(ListItem list) {avalibleItem = list;}
+    public ListItem getAvalibleItem() {
         return avalibleItem;
     }
     public void addItem(Item item) {itemList.add(item);}
