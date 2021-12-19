@@ -41,6 +41,7 @@ public class Knapsack {
         }
         return false;
     }
+
     public boolean removeItem(Item item) {
         for (Item exists : itemList) {
             if (exists == item) {

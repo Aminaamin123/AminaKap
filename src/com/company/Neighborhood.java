@@ -14,6 +14,22 @@ public class Neighborhood {
         boolean change = false;
         //ListKnapsack copy = listKnapsack;
 
+        for (Item available : listItem.getItemList()){
+            for (Knapsack knapsack : listKnapsack.getItemList()){
+                if(knapsack.addItem(available)){
+                    listItem.removeItem(available);
+                    System.out.println("new item in list");
+                    change = true;
+                }
+            }
+        } // try filling with available
+        if (change){
+            int newTotal = totalValue(listKnapsack);
+            System.out.println("An available item where added to the list");
+            System.out.println("Old Total = "+total +" - New total = "+newTotal);
+            change = false;
+        }
+
         for (Knapsack knapsack : listKnapsack.getItemList()){
             List<Item> itemList = new ArrayList<Item>();
             itemList = knapsack.getItemList();
@@ -21,31 +37,29 @@ public class Neighborhood {
                 Item item = itemList.get(j);
                 // add items to other knapsack ???
                 for (int nextKnapsack = 0; nextKnapsack < listKnapsack.getSize(); nextKnapsack++) {
-                    if (listKnapsack.itemByIndex(nextKnapsack) == knapsack) {
-                        continue;
-                    }
-                    else{
                         Knapsack otherKnapsack = listKnapsack.itemByIndex(nextKnapsack);
                         if (otherKnapsack.addItem(item)) {
                             if (knapsack.removeItem(item)) {
                                 change = true;
-                                System.out.println("CHANGE HAPPENING");
-                                for (Item avalible : listItem.getItemList()){
-                                    if(knapsack.addItem(avalible)){
+                                for (Item available : listItem.getItemList()){
+                                    if(knapsack.addItem(available)){
+                                        listItem.removeItem(available);
                                         System.out.println("new item in list");
                                     }
                                 }
                                 break;
                             }
-                        }
                     }
                 }
             }
-        } // adding to other sack
-        int newTotal = totalValue(listKnapsack);
+        } // adding to other sack & and trying to fill with available
 
-        System.out.println("Old Total = "+total +" - New total = "+newTotal);
-
+        if (change){
+            int newTotal = totalValue(listKnapsack);
+            System.out.println("Change has been made between knapsacks");
+            System.out.println("Old Total = "+total +" - New total = "+newTotal);
+            change = false;
+        }
 
         for (Knapsack knapsack : listKnapsack.getItemList()){
             //System.out.println(knapsack.getItemList());
