@@ -6,13 +6,11 @@ import java.util.List;
 public class Knapsack {
     private List<Item> itemList = new ArrayList<Item>();
     //private List<Item> avalibleItem = new ArrayList<Item>();
-    ListItem avalibleItem = new ListItem();
     private int capacity;
 
-    public Knapsack(int capacity, List<Item> itemList, ListItem avalibleItem){
+    public Knapsack(int capacity, List<Item> itemList){
         this.capacity = capacity;
         this.itemList = itemList;
-        this.avalibleItem = avalibleItem;
     }
 
     public int getWeight(){
@@ -23,12 +21,35 @@ public class Knapsack {
         return weight;
     }
 
-    public void setAvalibleItem(ListItem list) {avalibleItem = list;}
-    public ListItem getAvalibleItem() {
-        return avalibleItem;
+    public int getValue() {
+        int value = 0;
+        for (Item item: itemList) {
+            value += item.getValue();
+        }
+        return value;
     }
-    public void addItem(Item item) {itemList.add(item);}
-    public void reomveItem(Item item) {itemList.remove(item);}
+
+    public int getSpaceInKnapsack() {
+        return capacity - getWeight();
+    }
+
+    public boolean addItem(Item item) {
+        int weight = getWeight() + item.getWeight();
+        if( weight <= capacity){
+            itemList.add(item);
+            return true;
+        }
+        return false;
+    }
+    public boolean removeItem(Item item) {
+        for (Item exists : itemList) {
+            if (exists == item) {
+                itemList.remove(item);
+                return true;
+            }
+        }
+        return false;
+    }
     public List<Item> getItemList() {
         return itemList;
     }

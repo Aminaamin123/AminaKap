@@ -32,8 +32,7 @@ public class Main {
 
         // Adding Neighborhood Search to improve
         //TODO: send list of knapsacks into Neighborhood to improve search
-        Neighborhood neighborhood = new Neighborhood(listKnapsack);
-
+        Neighborhood neighborhood = new Neighborhood(listKnapsack, listItem);
     }
 
 }

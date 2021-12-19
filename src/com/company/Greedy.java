@@ -61,7 +61,7 @@ public class Greedy {
             }else{done = true;}
             listItem.removeItem(item);
         }
-        knapsack = new Knapsack(max, itemPath, avalibleItem);
+        knapsack = new Knapsack(max, itemPath);
         // print(sumProfit, sumWeight);
     }
 
